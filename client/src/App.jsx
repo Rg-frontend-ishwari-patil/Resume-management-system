@@ -8,7 +8,7 @@ import AdminDashboard from "./components/AdminDashboard";
 import CandidateDashboard from "./components/CandidateDashboard";
 import ApplicationsByJob from "./pages/admin/AppliedJobs";
 import AnalyticsDashboard from "./pages/admin/AnalyticsDashboard";
-import CreateJob from "./pages/Createjob";
+import CreateJob from "./pages/CreateJob";
 import Navbar from "./pages/Navbar";
 
 function App() {
