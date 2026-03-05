@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:7878/api/v1'
+  baseURL: 'https://resume-backend-1rnz.onrender.com/api/v1'
 });
 
 export default API;
