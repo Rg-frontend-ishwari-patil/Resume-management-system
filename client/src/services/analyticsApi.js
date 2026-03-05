@@ -1,7 +1,5 @@
 // services/analyticsApi.js
-import axios from "axios";
-
-const API_URL = "http://localhost:7878/api/v1/analytics";
+import API from "./api";
 
 // Get authentication token from localStorage
 const getAuthHeaders = () => {
@@ -14,17 +12,17 @@ const getAuthHeaders = () => {
 };
 
 export const getOverviewStats = async () => {
-    return await axios.get(`${API_URL}/overview`, getAuthHeaders());
+    return await API.get("/analytics/overview", getAuthHeaders());
 };
 
 export const getApplicationsByStatus = async () => {
-    return await axios.get(`${API_URL}/applications-by-status`, getAuthHeaders());
+    return await API.get("/analytics/applications-by-status", getAuthHeaders());
 };
 
 export const getMonthlyApplications = async () => {
-    return await axios.get(`${API_URL}/monthly-applications`, getAuthHeaders());
+    return await API.get("/analytics/monthly-applications", getAuthHeaders());
 };
 
 export const getAptitudeTestStats = async () => {
-    return await axios.get(`${API_URL}/aptitude-stats`, getAuthHeaders());
+    return await API.get("/analytics/aptitude-stats", getAuthHeaders());
 };

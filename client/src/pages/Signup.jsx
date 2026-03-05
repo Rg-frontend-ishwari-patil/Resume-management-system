@@ -72,7 +72,7 @@
 // src/pages/Signup.jsx
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
+import API from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -99,8 +99,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:7878/api/v1/auth/signup";
-      await axios.post(url, form);
+      await API.post("/auth/signup", form);
       toast.success("Signup successful! Please login.");
       navigate("/login");
     } catch (err) {

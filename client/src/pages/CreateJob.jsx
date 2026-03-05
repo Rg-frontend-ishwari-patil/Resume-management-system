@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import API from "../services/api";
 import { toast } from "react-toastify";
 
 const CreateJob = () => {
@@ -17,15 +17,11 @@ const CreateJob = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.post(
-        "http://localhost:7878/api/v1/jobs",
-        job,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const { data } = await API.post("/jobs", job, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       toast.success("Job created successfully!");
       setJob({ title: "", description: "", requirements: "" });
     } catch (err) {

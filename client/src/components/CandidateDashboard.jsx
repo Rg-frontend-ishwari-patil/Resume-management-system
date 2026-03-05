@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getJobs } from "../services/jobApi";
 
 import { toast } from "react-toastify";
-import axios from "axios";
+import API from "../services/api";
 import TemporaryLogout from "../pages/TemporaryLogout";
 
 const JobList = () => {
@@ -42,9 +42,8 @@ const JobList = () => {
 
     try {
       console.log(formData);
-      console.log(`http://localhost:7878/api/v1/jobApplication/apply/${jobId}`);
-      await axios.post(
-        `http://localhost:7878/api/v1/jobApplication/apply/${jobId}`,
+      await API.post(
+        `/jobApplication/apply/${jobId}`,
         formData,
         {
           headers: {

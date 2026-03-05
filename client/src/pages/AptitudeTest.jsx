@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../services/api";
 
 const QUESTIONS = [
   {
@@ -107,8 +107,8 @@ const AptitudeTest = () => {
     if (jobId) {
       try {
         const token = localStorage.getItem("token");
-        await axios.put(
-          `http://localhost:7878/api/v1/jobapplication/candidate/aptitude-result/${jobId}`,
+        await API.put(
+          `/jobapplication/candidate/aptitude-result/${jobId}`,
           { score: correctCount, total: totalQuestions },
           {
             headers: {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../../services/api";
 import { toast } from "react-toastify";
 
 const AppliedJobs = () => {
@@ -15,7 +15,7 @@ const AppliedJobs = () => {
       const token = localStorage.getItem("token");
       console.log("🔐 Token:", token);
 
-      const { data } = await axios.get("http://localhost:7878/api/v1/jobs/admin/jobs", {
+      const { data } = await API.get("/jobs/admin/jobs", {
         headers: {
           Authorization: token,
         },
@@ -36,8 +36,8 @@ const AppliedJobs = () => {
   const fetchApplications = async (jobId) => {
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.get(
-        `http://localhost:7878/api/v1/jobapplication/admin/applications/job/${jobId}`,
+      const { data } = await API.get(
+        `/jobapplication/admin/applications/job/${jobId}`,
         {
           headers: {
             Authorization: token,
@@ -58,8 +58,8 @@ const AppliedJobs = () => {
   const handleStatusUpdate = async (applicationId, status) => {
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.put(
-        `http://localhost:7878/api/v1/jobapplication/admin/update-status/${applicationId}`,
+      const { data } = await API.put(
+        `/jobapplication/admin/update-status/${applicationId}`,
         { status },
         {
           headers: {
